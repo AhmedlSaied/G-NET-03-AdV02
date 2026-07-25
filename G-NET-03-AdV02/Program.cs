@@ -46,6 +46,18 @@ namespace ShopMaster
             }
         }
         #endregion
+        #region Task 03.2 : Transform Products Implementation
+        // Uses generic Func<Product, TResult> to map/project a product object to any target format.
+        public static List<TResult> TransformProducts<TResult>(List<Product> products, Func<Product, TResult> transformer)
+        {
+            List<TResult> result = new();
+            foreach (var product in products)
+            {
+                result.Add(transformer(product));
+            }
+            return result;
+        }
+        #endregion
         static void Main(string[] args)
             {
                 // Product Catalog Setup
