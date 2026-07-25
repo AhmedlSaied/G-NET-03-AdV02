@@ -58,6 +58,21 @@ namespace ShopMaster
             return result;
         }
         #endregion
+        #region Task 03.3 : Filter Products Implementation
+        // Uses Predicate<Product> explicitly designed for conditional filtering returning boolean.
+        public static List<Product> FilterProducts(List<Product> products, Predicate<Product> matchCondition)
+        {
+            List<Product> result = new();
+            foreach (var product in products)
+            {
+                if (matchCondition(product))
+                {
+                    result.Add(product);
+                }
+            }
+            return result;
+        }
+        #endregion
         static void Main(string[] args)
             {
                 // Product Catalog Setup
