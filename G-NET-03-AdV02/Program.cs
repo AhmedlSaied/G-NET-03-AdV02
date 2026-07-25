@@ -11,10 +11,30 @@ namespace ShopMaster
         public string Category { get; set; } = string.Empty; // "Electronics", "Clothing", "Food", "Books"
         public double Price { get; set; }
         public int Stock { get; set; }
-
+    }
         class Program
         {
-            static void Main(string[] args)
+        public static List<Product> SearchProducts(List<Product> products, Func<Product, bool> filter)
+        {
+            List<Product> result = new();
+            foreach (var product in products)
+            {
+                if (filter(product))
+                {
+                    result.Add(product);
+                }
+            }
+            return result;
+        }
+
+        private static void PrintSearchList(List<Product> products)
+        {
+            foreach (var p in products)
+            {
+                Console.WriteLine($"{p.Name} - ${p.Price} (Stock: {p.Stock})");
+            }
+        }
+        static void Main(string[] args)
             {
                 // Product Catalog Setup
                 List<Product> catalog = new()
@@ -30,6 +50,8 @@ namespace ShopMaster
                 new Product { Id=9, Name="Headphones", Category="Electronics", Price=150, Stock=40 },
                 new Product { Id=10, Name="Jacket", Category="Clothing", Price=120, Stock=15 }
             };
-            }
+            
         }
+      
+    }
     }
