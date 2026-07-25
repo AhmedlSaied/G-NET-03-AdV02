@@ -98,6 +98,21 @@ namespace ShopMaster
             Console.WriteLine("\n--- Detailed Report ---");
             PrintReport(catalog, p => Console.WriteLine($"[{p.Category}] {p.Name} | Price: ${p.Price} | Stock: {p.Stock}"));
             #endregion
+            #region Task 03.2 : Transform Products Execution
+            Console.WriteLine("\n--- Summary List ---");
+            var summaryList = TransformProducts(catalog, p => $"{p.Name} (${p.Price})");
+            foreach (var item in summaryList)
+            {
+                Console.WriteLine(item);
+            }
+
+            Console.WriteLine("\n--- Price Labels ---");
+            var priceLabels = TransformProducts(catalog, p => $"{p.Name}: {(p.Price > 100 ? "Expensive!" : "Affordable")}");
+            foreach (var label in priceLabels)
+            {
+                Console.WriteLine(label);
+            }
+            #endregion
         }
 
     }
