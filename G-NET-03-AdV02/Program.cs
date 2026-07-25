@@ -128,6 +128,14 @@ namespace ShopMaster
                 Console.WriteLine(label);
             }
             #endregion
+            #region Task 03.3 : Filter Products Execution
+            Console.WriteLine("\n--- Low-Stock Alert ---");
+            var lowStockProducts = FilterProducts(catalog, p => p.Stock < 20);
+            foreach (var p in lowStockProducts)
+            {
+                Console.WriteLine($"[LOW STOCK] {p.Name}: only {p.Stock} left!");
+            }
+            #endregion
         }
 
     }
