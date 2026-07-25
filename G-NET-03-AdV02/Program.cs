@@ -79,6 +79,13 @@ namespace ShopMaster
             var clothingUnder100 = SearchProducts(catalog, p => p.Category == "Clothing" && p.Price < 100);
             PrintSearchList(clothingUnder100);
             #endregion
+            #region Task 03.1 : Print Reports Execution
+            Console.WriteLine("\n--- Short Report ---");
+            PrintReport(catalog, p => Console.WriteLine($"{p.Name} - ${p.Price}"));
+
+            Console.WriteLine("\n--- Detailed Report ---");
+            PrintReport(catalog, p => Console.WriteLine($"[{p.Category}] {p.Name} | Price: ${p.Price} | Stock: {p.Stock}"));
+            #endregion
         }
 
     }
