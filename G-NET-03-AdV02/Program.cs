@@ -14,6 +14,7 @@ namespace ShopMaster
     }
         class Program
         {
+        #region Task 01 : Smart Product Search Implementation
         public static List<Product> SearchProducts(List<Product> products, Func<Product, bool> filter)
         {
             List<Product> result = new();
@@ -34,6 +35,17 @@ namespace ShopMaster
                 Console.WriteLine($"{p.Name} - ${p.Price} (Stock: {p.Stock})");
             }
         }
+        #endregion
+        #region Task 03.1 : Print Reports Implementation
+        // Uses Action<Product> because the passed lambda executes display logic (void return).
+        public static void PrintReport(List<Product> products, Action<Product> reportFormat)
+        {
+            foreach (var product in products)
+            {
+                reportFormat(product);
+            }
+        }
+        #endregion
         static void Main(string[] args)
             {
                 // Product Catalog Setup
