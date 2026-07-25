@@ -50,8 +50,24 @@ namespace ShopMaster
                 new Product { Id=9, Name="Headphones", Category="Electronics", Price=150, Stock=40 },
                 new Product { Id=10, Name="Jacket", Category="Clothing", Price=120, Stock=15 }
             };
-            
+            #region Task 01 : Smart Product Search Execution
+            Console.WriteLine("--- Electronics ---");
+            var electronics = SearchProducts(catalog, p => p.Category == "Electronics");
+            PrintSearchList(electronics);
+
+            Console.WriteLine("\n--- Under $50 ---");
+            var under50 = SearchProducts(catalog, p => p.Price < 50);
+            PrintSearchList(under50);
+
+            Console.WriteLine("\n--- In Stock ---");
+            var inStock = SearchProducts(catalog, p => p.Stock > 0);
+            PrintSearchList(inStock);
+
+            Console.WriteLine("\n--- Clothing Under $100 ---");
+            var clothingUnder100 = SearchProducts(catalog, p => p.Category == "Clothing" && p.Price < 100);
+            PrintSearchList(clothingUnder100);
+            #endregion
         }
-      
+
     }
     }
